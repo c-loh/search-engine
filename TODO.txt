@@ -1,0 +1,109 @@
+[(apple, line 32), (aptitude, line 33)]
+
+
+FOR LATER:
+- fix feature function --> change scores to decimal stuff
+- TF/IDF SCORE FAK {do at search time}
+    - IDF(t) = log_e(Total number of documents / Number of documents with term t in it).
+        - this measures how important a term is
+    - term frequency = number of times the term appears / number of words in the doc
+        - TF(t) = (Number of times term t appears in a document) / (Total number of terms in the document).
+    - tf-idf(term, doc) = term_frequency(term, doc) * log(N/(doc*freq + 1))
+        - t — term (word)
+        - d — document (set of words)
+        - N — count of corpus
+        - corpus — the total document set
+    - w(i,j) = tf(i,j) * log(N/df(i))
+        - tf(i,j) = number of occurrences of i in j
+        - df(i) = number of documents containing i
+        - N = total number of documents
+
+{token: {docid: posting, docid2: posting2, ...}, token2: {...}, ...}
+
+
+
+
+OPTIMIZATION STRATEGIES:
+- get rid of posting class and try to use seek instead (for milestone 1)
+- sets instead of dicts for better searching
+
+
+will need bookkeeping data structure for seek positions
+token -> position/offset
+
+ape
+apple
+axe
+
+[ape: 0, apple: 4, axe: 9]
+
+
+a_datastructure
+{dictionary} // can use pickle to load
+
+first_half.txt
+apple
+bear
+zebra
+
+second_half.txt
+apple 
+button
+yellow
+
+
+a.txt (pickled)
+a_dictionary = load(a.txt) #index file
+
+make a_dictionary formatted into a_format.txt
+make indexes which has the line numbers of a_format.txt 
+
+apple:
+[other]
+acrobat:
+[other]
+
+use line_cache
+
+{docid: url}
+
+INVERT INDEX CREATION:
+- token_dict during offload process
+- mapping from url:doc_id
+
+SEARCH:
+- index of index
+- open every file in formatted-files
+- mapping from url:doc_id
+
+
+1. Create function that loads the index files into a dict, format it, and dump it into a textfile for each letter
+    a. While doing this, create index of indexes
+2. Search
+    a. Here you line cache and do all that other beautiful glorious amazing stuff
+
+
+
+
+potential idea:
+    at the very end of indexing everything, simply load the final letter file into a data structure
+    and then put that into a file organized while creating all that fancy fancy stuff for optimization.
+
+    BENEFITS 
+        - we don't have to change our code that much
+        - tbh main benefit
+    
+    NOTES
+        - use linecache built into python std library to look at specific lines without loading entire file
+
+
+
+cache_words = [cristina:post, lopes:post]
+
+if first_word in cache_words:
+    line = cache_words[cristina]
+    postings = line.split('*')
+
+else if first_word in pos_index:
+    line = getcache
+    postings = line.split('*')
