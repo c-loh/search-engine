@@ -31,7 +31,7 @@ curchar = first_word[0]   # get first letter of token
 dict = load(curchar + ".txt")    # go to appropriate letter index
 if first_word in dict:
     for docid, posting in dict[first_word]:
-        results[docid] = posting.get_score()
+        results[docid] = posting.get_score()nt
     // results = {docid: posting, docid: posting}
 else:
     // the algorithm is over. no results found ??
@@ -70,9 +70,10 @@ def stemmer(words):
         words[w] = ks.stem(words[w])
     return words
 
-def search1():
+
+def search(query, pos_index, cache_dict):
     # get input from console/python shell
-    query = input("Enter a query: ")
+    # query = input("Enter a query: ")
 
     start = time.time()
 
@@ -80,74 +81,11 @@ def search1():
     query_text = query.lower()
     query_text = re.sub(r"\.[^a-z]|,|\(|\)|:|&|;|\?|!|\"|\{|\}|\[|\]", " ", query_text)
     words = nltk.tokenize.casual_tokenize(query_text)
-    words = stemmer(words)
-    # print("words: ", words)
-
-    # get dict corresponding to query words
-    first_word = words[0]
-    # print("first word: ", first_word)
-    results = dict()   # our function returns this
-    curchar = first_word[0]   # get first letter of token
-    char_dict = basic_load("index-files/" + curchar + ".txt")    # go to appropriate letter index
-    # print("char_dict: ", char_dict)
-    
-    # DEAL W FIRST WORD FIRST
-    if first_word in char_dict: #char_dict gives you all of a, etc...
-        for posting in char_dict[first_word].values():
-            results[posting.get_url()] = posting.compute_score() 
-        # results = {docid: posting, docid: posting}
-    else:
-        # the algorithm is over. no results found ??
-        print("could not find first token")
-        return
-    # char_dict.clear()
-
-    # DEAL W REST OF WORDS  
-    for word in words[1:]:    # word is a token
-        # print("word: ", word)
-        curchar = word[0]
-        char_dict = basic_load("index-files/" + curchar + ".txt") # get function from ms1
-        tempResults = dict()
-        for posting in char_dict[word].values():
-            # print("docid, posting: ", docid, posting)
-            if posting.get_url() in results:
-                tempResults[posting.get_url()] = posting.compute_score() + results[posting.get_url()] # url, score
-        results = tempResults
-        # char_dict.clear()
-        # tempResults.clear()
-
-    end = time.time()
-    print('time elapased: ', end - start)
-    
-    count = 0
-    for result in sorted(results, key=lambda x: results[x], reverse=True):
-        print(result, ":", results[result])
-        count += 1
-        if count == 5:
-            break
-    
-    return results
-
-
-
-
-
-
-def search2(pos_index, cache_dict):
-    # get input from console/python shell
-    query = input("Enter a query: ")
-
-    start = time.time()
-
-    # lowercase, get rid of punctuation, get casual tokenization w nltk
-    query_text = query.lower()
-    query_text = re.sub(r"\.[^a-z]|,|\(|\)|:|&|;|\?|!|\"|\{|\}|\[|\]", " ", query_text)
-    words = nltk.tokenize.casual_tokenize(query_text)
-    words = stemmer(words)
+    words = list(set(stemmer(words)))
 
     # data structures we need
     url_mapping = basic_load("url_mapping.txt")
-    results = defaultdict(int)   # our function returns this
+    results = defaultdict(float)   # our function returns this
 
     # get the first word. results represents all ANDed urls but will start with all urls that have first_word in query 
     first_word = words[0]
@@ -165,18 +103,6 @@ def search2(pos_index, cache_dict):
         results = first_posting(line, results)
         # split by *
         # ['docid/score/1/3/17/85', 'docid/score/positions]
-        # postings = line.split('*')
-        # # print("first word results:")
-        # for post in postings[:-1]:
-        #     # split each of those by / when necessary
-        #     # ['docid', 'score', '1', '3', '17', '85', '']
-        #     post = post.split('/')
-        #     # print("post: ", post)
-        #     docid = post[0]
-        #     # print(docid, ",")
-        #     score = post[1]
-        #     results[docid] += int(score)
-        # print("\n")
     else:
         print("couldn't find first word:", first_word)
         return
@@ -196,25 +122,6 @@ def search2(pos_index, cache_dict):
             line = linecache.getline(charfile, pos_index[word])
             tempResults = other_posting(line, results)
 
-            # tempResults = defaultdict(int)
-            # postings = line.split('*')
-            # # print("postings", postings)
-            
-            # # print("second word results:")
-            # for post in postings[:-1]:
-            #     # split each of those by / when necessary
-            #     # ['docid', 'score', '1', '3', '17', '85', '']
-                
-            #     post = post.split('/')
-            #     # print("post:", post)
-            #     docid = post[0]
-            #     # print(docid, ",")
-            #     score = post[1]
-            #     if docid in results:
-            #         # print("docid found for second word:", docid)
-            #         tempResults[docid] += int(score)
-            # print("\n")
-
             results = tempResults
         else:
             # if word is not in pos_index, then we can't really do anything
@@ -223,21 +130,24 @@ def search2(pos_index, cache_dict):
     
     end = time.time()
     print('query time: ', end - start)
+
+    real_results = dict()
     
     count = 0
-    print("number of results: ", len(results))
+    # print("number of results: ", len(results))
     for result in sorted(results, key=lambda x: results[x], reverse=True):
         url = url_mapping[int(result)]
         print(url, ":", results[result])
+        real_results[url] = results[result]
         count += 1
         if count == 5:
             break
     
-    return results
+    return (real_results, end-start)
         
 
 def cache_words(pos_index, cache_dict):
-    cache_list = ['cristina', 'lopes', 'machine', 'learning', 'ACM', 'master', 'of', 'software', 'engineering']
+    cache_list = {'cristina', 'lopes', 'machine', 'learning', 'ACM', 'master', 'of', 'software', 'engineering', 'the', 'for', 'computer', 'science', 'and', 'but', 'UCI', 'or', 'not', 'to', 'thornton', 'shindler', 'pattis', 'ibrahim', 'ziv'}
     for word in cache_list:
         if word in pos_index:
             curchar = word[0]
@@ -247,6 +157,7 @@ def cache_words(pos_index, cache_dict):
 
 def first_posting(line, results):
     postings = line.split('*')
+    # ["docid/score/pos/pos/...", "docid/score/pos/pos/...", ...]
     # print("first word results:")
     for post in postings[:-1]:
         # split each of those by / when necessary
@@ -256,11 +167,11 @@ def first_posting(line, results):
         docid = post[0]
         # print(docid, ",")
         score = post[1]
-        results[docid] += int(score)
+        results[docid] += float(score)
     return results
 
 def other_posting(line, results):
-    tempResults = defaultdict(int)
+    tempResults = defaultdict(float)
     postings = line.split('*')
     # print("postings", postings)
     
@@ -268,7 +179,6 @@ def other_posting(line, results):
     for post in postings[:-1]:
         # split each of those by / when necessary
         # ['docid', 'score', '1', '3', '17', '85', '']
-        
         post = post.split('/')
         # print("post:", post)
         docid = post[0]
@@ -276,13 +186,19 @@ def other_posting(line, results):
         score = post[1]
         if docid in results:
             # print("docid found for second word:", docid)
-            tempResults[docid] += int(score)
+            tempResults[docid] += float(score)
     return tempResults
 
-
-if __name__ == "__main__":
-    # results = search()
+def run(query):
     pos_index = basic_load("pos_index.txt")
     cache_dict = dict()
     cache_words(pos_index, cache_dict)
-    search2(pos_index, cache_dict)
+    return search(query, pos_index, cache_dict)
+
+if __name__ == "__main__":
+    # results = search()
+    # pos_index = basic_load("pos_index.txt")
+    # cache_dict = dict()
+    # cache_words(pos_index, cache_dict)
+    # search(pos_index, cache_dict)
+    run("computer graphics")

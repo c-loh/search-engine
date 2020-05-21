@@ -1,0 +1,780 @@
+BAD for effectiveness:
+"has to be and robot"
+- ranking bad because lots of stop words (doesnt consider rare word importance)
+"big O"
+"int i"
+- doesnt consider positions
+"to be or not to be"
+- positions
+"it is what it is"
+- positions
+"k-best solutions"
+"dump.txt"
+- doesn't split up so can't even search for it
+"catalogue uci edu majors"
+- thers a catalogue.uci.edu subdomain that it didnt catch
+"pattis robot"
+- doesnt even get links by pattis smh disrespeking my mans like this
+"aditi majumder"
+- didnt go to her actual page
+"average gpa"
+"freshman application"
+"ics faculty"
+
+BAD for performance:
+"thornton project 4 set the controls for the heart of the sun" 0.524s
+- long queries take longer
+"computer science ics robot and the best one would most" 0.358s
+- fixed using cache words --> 0.270s
+"to be or not to be or not to not be" 0.421s
+- fixed by getting rid of duplicate words in query by making it a set --> 0.173s
+
+
+
+GOOD for effectiveness:
+"polynomial time"
+"fafsa"
+"webreg"
+"thornton project data structure"
+
+GOOD for performance: 
+"love" 0.043
+"seventeen" 0.047
+"omg" 0.047
+"google" 0.061
+"machine learning" 0.062s
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/usr/local/bin/python3 /Users/caitlin/Desktop/COMPSCI-121/Assignment3/search.py
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+(base) Caitlin-MBP-2:Assignment3 caitlin$ /usr/local/bin/python3 /Users/caitlin/Desktop/COMPSCI-121/Assignment3/search.py
+Enter a query: informatics
+query time:  0.09829592704772949
+number of results:  4570
+https://www.informatics.uci.edu/very-top-footer-menu-items/people/#Affiliated : 78
+https://www.informatics.uci.edu/very-top-footer-menu-items/people/ : 78
+https://www.ics.uci.edu/faculty/index.php : 58
+https://www.ics.uci.edu/faculty/ : 58
+https://www.ics.uci.edu/faculty/faculty_dept?department=Informatics : 51
+(base) Caitlin-MBP-2:Assignment3 caitlin$ /usr/local/bin/python3 /Users/caitlin/Desktop/COMPSCI-121/Assignment3/search.p
+(null): can't open file '/Users/caitlin/Desktop/COMPSCI-121/Assignment3/search.p': [Errno 2] No such file or directory
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: has to robot
+query time:  0.20370984077453613
+number of results:  318
+https://www.ics.uci.edu/~rickl/courses/cs-171/2016-smrq-cs171/CS-171-SMRQ-2016.htm : 34
+https://www.ics.uci.edu/~ics1c/doc/www_faq.html : 33
+https://www.informatics.uci.edu/from-homebound-to-school-bound-with-telepresence-robots/#content : 31
+https://www.informatics.uci.edu/from-homebound-to-school-bound-with-telepresence-robots/ : 31
+https://www.ics.uci.edu/community/news/view_news.php?id=1265 : 31
+(base) Caitlin-MBP-2:Assignment3 caitlin$ carey
+bash: carey: command not found
+(base) Caitlin-MBP-2:Assignment3 caitlin$ caitlin$ python3 search.py
+bash: caitlin$: command not found
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: carey mike
+query time:  0.04927802085876465
+number of results:  732
+https://www.ics.uci.edu/~kay/courses/h22/hw/DVD.txt : 11
+https://www.ics.uci.edu/~kay/courses/h22/hw/DVD-random.txt : 11
+https://www.ics.uci.edu/~kay/wordlist.txt : 10
+http://cert.ics.uci.edu/EMWS09/index.html : 4
+https://www.ics.uci.edu/community/news/view_news.php?id=1063 : 3
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: has to be and robot
+query time:  0.284531831741333
+number of results:  67
+https://www.ics.uci.edu/~rickl/courses/cs-171/2013-fq-cs171/CS-171-FQ-2013.htm : 24
+https://www.ics.uci.edu/~rickl/courses/cs-171/2012-fq-cs171/CS-171-FQ-2012.htm : 19
+https://www.ics.uci.edu/~rickl/courses/cs-271/2011-fq-cs271/CS-271-FQ-2011.htm : 17
+https://cml.ics.uci.edu/category/aiml/page/2/ : 14
+https://cml.ics.uci.edu/category/aiml/page/2/#content : 14
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: robot
+query time:  0.07559514045715332
+number of results:  578
+https://www.ics.uci.edu/~rickl/courses/cs-171/2016-smrq-cs171/CS-171-SMRQ-2016.htm : 34
+https://www.ics.uci.edu/~ics1c/doc/www_faq.html : 33
+https://www.informatics.uci.edu/from-homebound-to-school-bound-with-telepresence-robots/#content : 31
+https://www.informatics.uci.edu/from-homebound-to-school-bound-with-telepresence-robots/ : 31
+https://www.ics.uci.edu/community/news/view_news.php?id=1265 : 31
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: data science 
+query time:  0.11473631858825684
+number of results:  5037
+https://www.ics.uci.edu/~eppstein/bibs/eppstein.html : 102
+https://www.ics.uci.edu/community/news/notes/notes_2014.php : 85
+https://www.ics.uci.edu/~dan/class/267P/datasets/calgary/bib : 83
+https://www.ics.uci.edu/community/news/notes/notes_2007.php : 81
+https://www.ics.uci.edu/community/news/notes/notes_2010.php : 69
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: data structure
+query time:  0.0930168628692627
+number of results:  4834
+http://mondego.ics.uci.edu/datasets/maven-contents.txt : 491
+https://www.ics.uci.edu/~eppstein/pubs/pubs.ff : 98
+https://www.ics.uci.edu/~eppstein/pubs/all.html : 97
+https://www.ics.uci.edu/~eppstein/bibs/subiso.bib : 65
+https://www.ics.uci.edu/~eppstein/bibs/kpath.bib : 63
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: pattis data structure
+query time:  0.12020421028137207
+number of results:  89
+https://www.ics.uci.edu/~pattis/ICS-46/assignments/program0/program.html : 23
+https://www.ics.uci.edu/~pattis/quotations.html : 18
+https://www.ics.uci.edu/~pattis/ICS-46/lectures/overview/lecture.html : 16
+https://www.ics.uci.edu/~pattis/ICS-46/handouts/syllabus/syllabus.html : 10
+https://www.ics.uci.edu/~pattis/ICS-46/lectures/notes/hashing.txt : 10
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: thornton data structure
+query time:  0.12276196479797363
+number of results:  90
+https://www.ics.uci.edu/~thornton/ics46/ProjectGuide/Project4/ : 25
+https://www.ics.uci.edu/~pattis/ICS-46/lectures/notes/arrayimplementation.txt : 13
+https://www.ics.uci.edu/~thornton/ics46/ProjectGuide/Project2/ : 13
+https://www.ics.uci.edu/~jacobson/ics23/LabManual/04-SearchingForABetterWay.html : 11
+https://www.ics.uci.edu/~kay/courses/i41/hw/lab8.html : 10
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: pattis thornton data structure
+query time:  0.1634538173675537
+number of results:  1
+https://www.ics.uci.edu/~kay/wordlist.txt : 7
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: time complexity
+query time:  0.10095524787902832
+number of results:  1428
+https://www.ics.uci.edu/~pattis/ICS-33/lectures/complexitypython.txt : 81
+https://www.ics.uci.edu/~eppstein/bibs/kpath.bib : 64
+https://www.ics.uci.edu/~pattis/ICS-33/lectures/aa.txt : 59
+https://www.ics.uci.edu/~eppstein/pubs/pubs.ff : 54
+https://www.ics.uci.edu/~eppstein/pubs/all.html : 53
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+
+Enter a query: Traceback (most recent call last):
+  File "search.py", line 288, in <module>
+    search2(pos_index, cache_dict)
+  File "search.py", line 153, in search2
+    first_word = words[0]
+IndexError: list index out of range
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: algorithms
+query time:  0.06795597076416016
+number of results:  945
+https://www.ics.uci.edu/~eppstein/pubs/all.html : 369
+https://www.ics.uci.edu/~eppstein/pubs/graph-all.html : 215
+https://www.ics.uci.edu/~eppstein/bibs/subiso.bib : 215
+https://www.ics.uci.edu/~ihler/papers/abs.html#ssp05 : 133
+https://cml.ics.uci.edu/category/aiml/page/2/ : 113
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: data structures and algorithms
+query time:  0.12387204170227051
+number of results:  324
+https://www.ics.uci.edu/~eppstein/pubs/all.html : 369
+https://www.ics.uci.edu/~eppstein/pubs/graph-all.html : 215
+https://www.ics.uci.edu/~eppstein/bibs/subiso.bib : 215
+https://www.ics.uci.edu/~ihler/papers/abs.html#ssp05 : 133
+https://cml.ics.uci.edu/category/aiml/page/2/ : 113
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: thornton data structures and algorithms
+query time:  0.14389872550964355
+number of results:  13
+https://www.ics.uci.edu/~thornton/ics65/ProjectGuide/Project5/ : 9
+https://www.ics.uci.edu/~irani/s11_22/Project5/Project5.html : 7
+https://www.ics.uci.edu/~thornton/ics22/LabManual/SignalToNoise/ : 7
+https://www.ics.uci.edu/~irani/w10_23/Lab3/LostForWords.htm : 5
+https://www.ics.uci.edu/~kay/wordlist.txt : 5
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: discrete math and boolean algebra
+query time:  0.1173250675201416
+number of results:  4
+https://www.ics.uci.edu/~kay/wordlist.txt : 6
+https://www.ics.uci.edu/~eppstein/pubs/all.html : 3
+https://cml.ics.uci.edu/category/aiml/#content : 1
+https://cml.ics.uci.edu/category/aiml/ : 1
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: discrete math
+query time:  0.07259678840637207
+number of results:  214
+https://www.ics.uci.edu/~eppstein/bibs/eppstein.html : 114
+https://www.ics.uci.edu/~eppstein/bibs/kpath.bib : 82
+https://www.ics.uci.edu/~eppstein/junkyard/all.html : 41
+https://www.ics.uci.edu/~eppstein/junkyard/napkin.html : 31
+https://www.ics.uci.edu/~eppstein/pubs/pubs.ff : 27
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: time and complexity
+query time:  0.12634897232055664
+number of results:  177
+https://www.ics.uci.edu/~eppstein/pubs/all.html : 53
+https://www.ics.uci.edu/~pattis/ICS-46/lectures/notes/aa2.txt : 45
+https://www.ics.uci.edu/~eppstein/bibs/subiso.bib : 17
+https://www.ics.uci.edu/~eppstein/pubs/graph-all.html : 16
+https://ngs.ics.uci.edu/geeks-like-complexity/ : 13
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: time complexity
+query time:  0.10444116592407227
+number of results:  1428
+https://www.ics.uci.edu/~pattis/ICS-33/lectures/complexitypython.txt : 81
+https://www.ics.uci.edu/~eppstein/bibs/kpath.bib : 64
+https://www.ics.uci.edu/~pattis/ICS-33/lectures/aa.txt : 59
+https://www.ics.uci.edu/~eppstein/pubs/pubs.ff : 54
+https://www.ics.uci.edu/~eppstein/pubs/all.html : 53
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: binary search trees
+query time:  0.11503410339355469
+number of results:  336
+http://mondego.ics.uci.edu/datasets/maven-contents.txt : 257
+https://www.ics.uci.edu/~eppstein/bibs/kpath.bib : 247
+https://www.ics.uci.edu/~pattis/ICS-33/lectures/treesi.txt : 142
+https://www.ics.uci.edu/~pattis/ICS-46/lectures/notes/bst.txt : 136
+https://www.ics.uci.edu/~thornton/ics46/Notes/AVLTrees/ : 133
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: Big )
+query time:  0.0729668140411377
+number of results:  2362
+https://www.ics.uci.edu/~kay/courses/h22/hw/DVD.txt : 175
+https://www.ics.uci.edu/~kay/courses/h22/hw/DVD-random.txt : 175
+http://flamingo.ics.uci.edu/releases/4.1/src/lbaktree/data/data.txt : 65
+http://flamingo.ics.uci.edu/releases/4.0/src/lbaktree/data/data.txt : 65
+https://www.ics.uci.edu/~pattis/ICS-46/lectures/notes/aa2.txt : 41
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: Big O
+query time:  0.07538104057312012
+number of results:  429
+https://www.ics.uci.edu/~pattis/ICS-33/lectures/complexitypython.txt : 308
+https://www.ics.uci.edu/~eppstein/161/960229.html : 270
+https://www.ics.uci.edu/~eppstein/bibs/kpath.bib : 242
+https://www.ics.uci.edu/~dan/class/267P/datasets/calgary/book1 : 207
+https://www.ics.uci.edu/~pattis/ICS-33/lectures/class.txt : 204
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: int i
+query time:  0.09154009819030762
+number of results:  1710
+https://grape.ics.uci.edu/wiki/asterix/raw-attachment/wiki/cs122a-2019-spring/Homework5Dump.sql : 1664
+https://cbcl.ics.uci.edu/public_data/shilab/forColleen/MAJIQ/voila-KO-cort/ : 1220
+https://cbcl.ics.uci.edu/public_data/shilab/forColleen/MAJIQ/voila-KO-hind/ : 1066
+https://cbcl.ics.uci.edu/public_data/shilab/forColleen/MAJIQ/voila-Wt-hind/ : 1034
+https://cbcl.ics.uci.edu/public_data/shilab/forColleen/MAJIQ/voila-Wt-cort/ : 924
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: i am the and of but
+query time:  0.30925893783569336
+number of results:  785
+https://www.ics.uci.edu/~pattis/ICS-33/lectures/review.txt : 157
+https://www.ics.uci.edu/~eppstein/cgt/sylver.html : 65
+https://www.ics.uci.edu/~ejw/authoring/protocol/draft-ietf-webdav-rfc2518bis-04.txt : 45
+https://www.ics.uci.edu/~rickl/courses/cs-271/2013-wq-cs271/CS-271-WQ-2013-broken-save.htm : 39
+https://www.ics.uci.edu/~rickl/courses/cs-271/2011-fq-cs271/CS-271-FQ-2011.htm : 39
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: to be or not to be
+query time:  0.3118100166320801
+number of results:  9924
+https://grape.ics.uci.edu/wiki/public/raw-attachment/wiki/cs221-2019-spring-project2/Team2StressTest.txt : 1256
+https://www.ics.uci.edu/~dan/class/267P/datasets/calgary/book1 : 811
+https://www.ics.uci.edu/~ejw/authoring/protocol/draft-ietf-webdav-rfc2518bis-04.txt : 361
+https://www.ics.uci.edu/~ejw/authoring/protocol/draft-ietf-webdav-protocol-10.txt : 313
+https://www.ics.uci.edu/~ejw/authoring/protocol/draft-ietf-webdav-protocol-09.txt : 308
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: it is what it is
+query time:  0.2056431770324707
+number of results:  8611
+https://www.ics.uci.edu/~eppstein/bibs/kpath.bib : 934
+https://grape.ics.uci.edu/wiki/public/raw-attachment/wiki/cs221-2019-spring-project2/Team2StressTest.txt : 884
+https://www.ics.uci.edu/~dan/class/267P/datasets/calgary/book1 : 765
+https://www.ics.uci.edu/~pattis/ICS-33/lectures/review.txt : 721
+https://www.ics.uci.edu/~dan/class/267P/datasets/calgary/news : 611
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: course reference
+query time:  0.12462091445922852
+number of results:  2623
+http://mondego.ics.uci.edu/datasets/maven-contents.txt : 164
+https://www.ics.uci.edu/~dan/class/267P/datasets/calgary/news : 146
+https://www.ics.uci.edu/~ejw/authoring/collection/draft-ietf-webdav-collection-reqts-02.txt : 138
+https://www.ics.uci.edu/~ejw/authoring/collection/dt/CollReqts031.txt : 116
+https://www.ics.uci.edu/~pattis/ICS-21/lectures/arrays1d/lecture.html : 113
+(base) Caitlin-MBP-2:Assignment3 caitlin$ 
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: honesty and integrity
+query time:  0.11663603782653809
+number of results:  43
+https://www.ics.uci.edu/~redmiles/ics125-FQ01/adp.html : 6
+https://www.ics.uci.edu/~rickl/courses/cs-271/2013-wq-cs271/CS-271-WQ-2013-broken-save.htm : 3
+https://www.ics.uci.edu/~rickl/courses/cs-271/2011-fq-cs271/CS-271-FQ-2011.htm : 3
+https://www.ics.uci.edu/~kay/wordlist.txt : 3
+https://www.ics.uci.edu/~xhx/courses/CS175/ : 2
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: k-best solutions
+query time:  0.06305885314941406
+number of results:  13
+https://www.ics.uci.edu/~eppstein/pubs/pubs.ff : 39
+https://www.ics.uci.edu/~eppstein/pubs/all.html : 36
+https://www.ics.uci.edu/~eppstein/pubs/graph-all.html : 23
+https://www.ics.uci.edu/~eppstein/pubs/a-solo.html : 17
+https://www.ics.uci.edu/~eppstein/pubs/c-other.html : 14
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: thornton project 4 set the controls for the heart of the sun
+query time:  0.5235800743103027
+number of results:  5
+http://flamingo.ics.uci.edu/releases/4.1/src/lbaktree/data/data.txt : 19
+http://flamingo.ics.uci.edu/releases/4.0/src/lbaktree/data/data.txt : 19
+https://www.ics.uci.edu/~thornton/ics46/ProjectGuide/Project4/ : 7
+https://www.ics.uci.edu/~thornton/ics46/ProjectGuide/ : 1
+https://www.ics.uci.edu/~thornton/ics46/ProjectGuide/index.html : 1
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: a & m
+query time:  0.0771796703338623
+number of results:  1265
+http://mondego.ics.uci.edu/datasets/maven-contents.txt : 478
+https://www.ics.uci.edu/~ejw/authoring/protocol/rfc2518.fr.html : 400
+https://www.ics.uci.edu/~eppstein/pubs/all.html : 191
+https://www.ics.uci.edu/~marios/pubs.html : 129
+https://www.ics.uci.edu/~mjcarey/MJCarey_Publications.html : 100
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: ## $    
+couldn't find first word: #
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: xylophone crying 
+query time:  0.06934285163879395
+number of results:  1
+https://www.ics.uci.edu/~kay/wordlist.txt : 3
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: crying xylophone
+query time:  0.07193803787231445
+number of results:  1
+https://www.ics.uci.edu/~kay/wordlist.txt : 4
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: hello
+query time:  0.06395626068115234
+number of results:  539
+http://mondego.ics.uci.edu/datasets/maven-contents.txt : 246
+https://www.ics.uci.edu/~aburtsev/143A/hw/hw1-simple-programs.html : 51
+https://www.ics.uci.edu/~thornton/ics32a/Notes/PythonBasics/ : 32
+https://www.ics.uci.edu/~thornton/ics32/Notes/PythonBasics/ : 32
+https://www.ics.uci.edu/~thornton/ics33/CodeExamples/Inheritance/ : 31
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: and
+query time:  0.07965803146362305
+number of results:  10038
+https://www.ics.uci.edu/~kay/courses/h22/hw/DVD-random.txt : 1648
+https://www.ics.uci.edu/~eppstein/pubs/all.html : 1187
+https://cml.ics.uci.edu/category/aiml/page/2/ : 642
+https://cml.ics.uci.edu/category/aiml/page/2/#content : 642
+https://www.ics.uci.edu/~eppstein/pubs/graph-all.html : 627
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: and that but
+query time:  0.17310690879821777
+number of results:  2186
+https://www.ics.uci.edu/~pattis/ICS-33/lectures/review.txt : 157
+https://www.ics.uci.edu/~eppstein/cgt/sylver.html : 65
+https://www.ics.uci.edu/~thornton/ics32/Notes/PythonBasics/ : 65
+https://www.ics.uci.edu/~pattis/ICS-46/lectures/notes/hashing.txt : 46
+https://www.ics.uci.edu/~ejw/authoring/protocol/draft-ietf-webdav-rfc2518bis-04.txt : 45
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: polynomial time pattis
+query time:  0.1343228816986084
+number of results:  1
+https://www.ics.uci.edu/~kay/wordlist.txt : 2
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: computer science artificial intelligence
+query time:  0.12603116035461426
+number of results:  284
+https://www.ics.uci.edu/~dechter/courses/ics-295/fall-2019/ : 68
+https://ngs.ics.uci.edu/list-of-publications/ : 41
+https://www.ics.uci.edu/~ihler/pubs.html : 26
+https://www.ics.uci.edu/~rickl/courses/cs-171/2013-fq-cs171/CS-171-FQ-2013.htm : 26
+https://www.ics.uci.edu/~rickl/courses/cs-171/2012-fq-cs171/CS-171-FQ-2012.htm : 22
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: computer science ics robot and the best
+query time:  0.2851991653442383
+number of results:  20
+https://www.ics.uci.edu/~eppstein/pubs/all.html : 17
+https://www.ics.uci.edu/~eppstein/pubs/graph-all.html : 12
+https://www.ics.uci.edu/community/news/index.php : 10
+https://www.ics.uci.edu/~rickl/courses/cs-271/2011-fq-cs271/CS-271-FQ-2011.htm : 8
+https://www.ics.uci.edu/~rickl/courses/cs-171/2013-fq-cs171/CS-171-FQ-2013.htm : 8
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: computer science ics robot and the best one would most
+query time:  0.3577911853790283
+number of results:  17
+https://www.ics.uci.edu/~eppstein/pubs/all.html : 24
+https://www.ics.uci.edu/~eppstein/pubs/graph-all.html : 17
+https://www.ics.uci.edu/~ejw/authoring/protocol/draft-ietf-webdav-rfc2518bis-04.txt : 12
+https://www.ics.uci.edu/~rickl/courses/cs-271/2013-wq-cs271/CS-271-WQ-2013-broken-save.htm : 11
+https://www.ics.uci.edu/~rickl/courses/cs-271/2011-fq-cs271/CS-271-FQ-2011.htm : 11
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: All these exam links will go active at 8am
+query time:  0.18587112426757812
+number of results:  0
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: computer computer computercomputer science              
+couldn't find word: computercomputer
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: computer science computer science computer science
+query time:  0.12710976600646973
+number of results:  12773
+https://www.ics.uci.edu/~eppstein/bibs/eppstein.html : 102
+https://www.ics.uci.edu/community/news/notes/notes_2014.php : 85
+https://www.ics.uci.edu/~dan/class/267P/datasets/calgary/bib : 83
+https://www.ics.uci.edu/community/news/notes/notes_2007.php : 81
+https://www.ics.uci.edu/community/news/notes/notes_2010.php : 69
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: computer science computer science computer science computer science computer science
+query time:  0.18268632888793945
+number of results:  12773
+https://www.ics.uci.edu/~eppstein/bibs/eppstein.html : 102
+https://www.ics.uci.edu/community/news/notes/notes_2014.php : 85
+https://www.ics.uci.edu/~dan/class/267P/datasets/calgary/bib : 83
+https://www.ics.uci.edu/community/news/notes/notes_2007.php : 81
+https://www.ics.uci.edu/community/news/notes/notes_2010.php : 69
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.pypyt
+(null): can't open file 'search.pypyt': [Errno 2] No such file or directory
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: ics student affairs office
+query time:  0.11782193183898926
+number of results:  30
+https://www.ics.uci.edu/faculty/ : 116
+https://www.ics.uci.edu/faculty/?department=Informatics : 41
+https://www.ics.uci.edu/~rickl/courses/cs-171/2012-fq-cs171/CS-171-FQ-2012.htm : 21
+https://www.ics.uci.edu/~rickl/courses/cs-171/2013-fq-cs171/CS-171-FQ-2013.htm : 21
+https://www.stat.uci.edu/faculty/ : 14
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: to be or not to be or not to not be
+query time:  0.4212958812713623
+number of results:  9924
+https://grape.ics.uci.edu/wiki/public/raw-attachment/wiki/cs221-2019-spring-project2/Team2StressTest.txt : 1256
+https://www.ics.uci.edu/~dan/class/267P/datasets/calgary/book1 : 811
+https://www.ics.uci.edu/~ejw/authoring/protocol/draft-ietf-webdav-rfc2518bis-04.txt : 361
+https://www.ics.uci.edu/~ejw/authoring/protocol/draft-ietf-webdav-protocol-10.txt : 313
+https://www.ics.uci.edu/~ejw/authoring/protocol/draft-ietf-webdav-protocol-09.txt : 308
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: but-and-the-worst-time-
+couldn't find first word: but-and-the-worst-time
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: don't wouldn't
+query time:  0.10776996612548828
+number of results:  2
+https://www.ics.uci.edu/~feldman/LEC10.htm : 3
+https://www.ics.uci.edu/~feldman/lec2F00.html : 3
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: but-and-the-worst-time-
+couldn't find first word: but-and-the-worst-time
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: irani informatics
+query time:  0.07874107360839844
+number of results:  74
+https://www.ics.uci.edu/faculty/index.php : 58
+https://www.ics.uci.edu/faculty/ : 58
+https://www.ics.uci.edu/community/news/notes/notes_2014.php : 23
+https://www.ics.uci.edu/community/news/ : 16
+https://www.ics.uci.edu/community/news/notes/notes_2010.php : 16
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: academic dishonesty
+query time:  0.08572793006896973
+number of results:  38
+https://www.ics.uci.edu/~redmiles/ics125-FQ01/adp.html : 27
+https://www.ics.uci.edu/~emilyo/teaching/info122w2015/index.html : 7
+https://www.ics.uci.edu/~rickl/courses/cs-171/2013-fq-cs171/CS-171-FQ-2013.htm : 7
+https://www.ics.uci.edu/~taylor/ics52_fq01/syllabus.html : 6
+https://www.ics.uci.edu/~taylor/ICS280_fq01.html : 6
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: seventy 70 thousand 1000 leagues under the sea s3a is where i1 want to drink tea
+couldn't find word: s3a
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: seventy 70 thousand 1000 leagues under the sea is where i want to drink tea
+query time:  0.45322394371032715
+number of results:  2
+https://www.ics.uci.edu/~kay/courses/h22/hw/DVD.txt : 3
+https://www.ics.uci.edu/~kay/courses/h22/hw/DVD-random.txt : 3
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: catalogue uci edu majors
+query time:  0.0866539478302002
+number of results:  318
+https://www.ics.uci.edu/ugrad/sao/Course_updates.php : 35
+https://www.ics.uci.edu/ugrad/sao/Course_updates : 35
+https://www.ics.uci.edu/ugrad/degrees/degree_cgs.php : 13
+https://www.ics.uci.edu/ugrad/degrees/degree_bim.php : 13
+https://www.ics.uci.edu/ugrad/degrees/degree_se.php : 10
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: ics specialization courses major
+query time:  0.09895777702331543
+number of results:  68
+https://www.ics.uci.edu/ugrad/sao/Course_updates.php : 35
+https://www.ics.uci.edu/ugrad/sao/Course_updates : 35
+https://www.ics.uci.edu/ugrad/degrees/degree_in4matx.php : 13
+https://www.ics.uci.edu/ugrad/degrees/degree_cgs.php : 13
+https://www.ics.uci.edu/community/news/spotlight/index.php : 13
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: machine learning
+query time:  0.061675071716308594
+number of results:  3539
+https://cml.ics.uci.edu/category/aiml/page/2/ : 198
+https://cml.ics.uci.edu/category/aiml/page/2/#content : 198
+https://cml.ics.uci.edu/category/aiml/#content : 181
+https://cml.ics.uci.edu/category/aiml/ : 181
+https://www.ics.uci.edu/~welling/publications/publications.html : 158
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: pattis robot
+query time:  0.10494112968444824
+number of results:  11
+https://www.ics.uci.edu/~kay/wordlist.txt : 15
+https://www.ics.uci.edu/~kay/courses/h22/hw/DVD.txt : 8
+https://www.ics.uci.edu/~kay/courses/h22/hw/DVD-random.txt : 8
+https://www.informatics.uci.edu/explore/books-we-have-written/#content : 1
+https://www.informatics.uci.edu/explore/books-we-have-written/ : 1
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: dump.txt
+couldn't find first word: dump.txt
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+uEnter a query: ^R
+uci
+query time:  0.08812332153320312
+number of results:  20121
+https://www.ics.uci.edu/~magda/Courses/ics156/Ch1_files/WS_FTP.LOG : 329
+https://www.informatics.uci.edu/very-top-footer-menu-items/people/#Affiliated : 183
+https://www.informatics.uci.edu/very-top-footer-menu-items/people/ : 183
+https://www.ics.uci.edu/community/news/ : 142
+https://www.ics.uci.edu/community/news/index.php : 142
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: nail polish
+query time:  0.09717988967895508
+number of results:  7
+https://www.ics.uci.edu/~kay/wordlist.txt : 9
+https://www.ics.uci.edu/~dan/class/267P/datasets/calgary/book1 : 5
+https://www.ics.uci.edu/~kay/courses/h22/hw/DVD.txt : 2
+https://www.ics.uci.edu/~kay/courses/h22/hw/DVD-random.txt : 2
+http://flamingo.ics.uci.edu/releases/4.1/src/lbaktree/data/data.txt : 1
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: polynomial time
+query time:  0.12494587898254395
+number of results:  317
+https://www.ics.uci.edu/~eppstein/bibs/kpath.bib : 290
+https://www.ics.uci.edu/~eppstein/pubs/pubs.ff : 153
+https://www.ics.uci.edu/~eppstein/pubs/all.html : 149
+https://www.ics.uci.edu/~eppstein/pubs/graph-all.html : 92
+https://www.ics.uci.edu/~eppstein/bibs/subiso.bib : 87
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: aditi majumder
+query time:  0.05990099906921387
+number of results:  10
+https://www.ics.uci.edu/faculty/ : 3
+https://www.ics.uci.edu/faculty/index.php?letter=M : 3
+https://www.ics.uci.edu/~irani/pubs/pubs.html : 2
+https://www.ics.uci.edu/faculty/area/#menu-01 : 2
+https://www.ics.uci.edu/community/news/view_news.php?id=1380 : 1
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: majumder
+query time:  0.04873991012573242
+number of results:  139
+http://graphics.ics.uci.edu/news.html : 80
+https://www.ics.uci.edu/~majumder/pub.html : 78
+http://graphics.ics.uci.edu/publication.html : 58
+https://www.ics.uci.edu/community/news/notes/notes_2010.php : 26
+https://www.ics.uci.edu/~gopi/Resume.html : 24
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: krone-martins
+couldn't find first word: krone-martins
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: alberto krone-martins
+couldn't find word: krone-martins
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: alberto krone martins
+query time:  0.07544112205505371
+number of results:  1
+https://www.ics.uci.edu/~kay/wordlist.txt : 7
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: krone martins
+query time:  0.04477286338806152
+number of results:  4
+https://www.ics.uci.edu/~kay/wordlist.txt : 7
+https://www.ics.uci.edu/~kay/courses/h22/hw/wordlist-random.txt : 1
+https://www.ics.uci.edu/~kay/courses/h22/hw/wordlist.txt : 1
+https://www.ics.uci.edu/~dan/genealogy/Krakow/Families/Spingarn.html : 1
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: alberto
+query time:  0.06406497955322266
+number of results:  16
+https://www.ics.uci.edu/~icgse2016/4_05accepted_papers.html : 2
+https://www.ics.uci.edu/~dechter/courses/ics-295/fall-2019/ : 2
+https://www.ics.uci.edu/~kay/wordlist.txt : 2
+https://ngs.ics.uci.edu/list-of-publications/ : 2
+https://www.ics.uci.edu/~thornton/ics142/index.html : 1
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: krone
+query time:  0.05352902412414551
+number of results:  11
+https://www.ics.uci.edu/~kay/courses/31/hw/lab2.html : 11
+https://www.ics.uci.edu/~kay/wordlist.txt : 4
+https://www.ics.uci.edu/~thornton/ics33/ProjectGuide/Project1/currency.txt : 2
+https://www.ics.uci.edu/~kay/courses/h22/hw/wordlist-random.txt : 1
+https://www.ics.uci.edu/community/news/view_news.php?id=1237 : 1
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: martins
+query time:  0.04666781425476074
+number of results:  480
+https://www.ics.uci.edu/~kay/courses/h22/hw/DVD.txt : 25
+https://www.ics.uci.edu/~kay/courses/h22/hw/DVD-random.txt : 25
+https://www.ics.uci.edu/community/news/view_news?id=1189 : 18
+https://www.ics.uci.edu/community/news/view_news.php?id=1189 : 18
+https://grape.ics.uci.edu/wiki/public/raw-attachment/wiki/cs122b-2017-winter-project1/data.sql : 16
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: google
+query time:  0.06125187873840332
+number of results:  5485
+http://mondego.ics.uci.edu/datasets/maven-contents.txt : 8274
+https://www.ics.uci.edu/~seal/projects/covert/GooglePlay_ICC_allSols.txt : 213
+https://seal.ics.uci.edu/projects/covert/GooglePlay_ICC_allSols.txt : 213
+https://grape.ics.uci.edu/wiki/asterix/raw-attachment/wiki/cs122a-2019-spring/Homework5Dump.sql : 50
+https://grape.ics.uci.edu/wiki/asterix/raw-attachment/wiki/cs122a-2019-spring/CompatibleHomework6Dump.sql : 50
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: big bob
+query time:  0.06614971160888672
+number of results:  65
+https://www.ics.uci.edu/~dan/class/267P/datasets/calgary/news : 44
+https://www.ics.uci.edu/~kay/courses/h22/hw/DVD.txt : 32
+https://www.ics.uci.edu/~kay/courses/h22/hw/DVD-random.txt : 32
+https://www.ics.uci.edu/~pattis/ICS-33/lectures/class.txt : 22
+https://www.ics.uci.edu/~irus/wisen/twist99/presentations/morgan/morgan-qna.html : 22
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py\
+> seventeen
+(null): can't open file 'search.pyseventeen': [Errno 2] No such file or directory
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.pyseventeen
+(null): can't open file 'search.pyseventeen': [Errno 2] No such file or directory
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: seventeen
+query time:  0.0475618839263916
+number of results:  23
+https://www.ics.uci.edu/~kay/courses/h22/hw/DVD.txt : 5
+https://www.ics.uci.edu/~kay/courses/h22/hw/DVD-random.txt : 5
+https://www.ics.uci.edu/~dan/class/267P/datasets/calgary/book1 : 3
+https://www.ics.uci.edu/~kay/wordlist.txt : 3
+https://www.ics.uci.edu/~feldman/lec17F00.html : 2
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: love
+query time:  0.04297614097595215
+number of results:  623
+https://www.ics.uci.edu/~kay/courses/h22/hw/DVD.txt : 261
+https://www.ics.uci.edu/~kay/courses/h22/hw/DVD-random.txt : 261
+https://www.ics.uci.edu/~dan/class/267P/datasets/calgary/book1 : 143
+https://grape.ics.uci.edu/wiki/public/raw-attachment/wiki/cs221-2019-spring-project2/Team2StressTest.txt : 104
+https://grape.ics.uci.edu/wiki/public/raw-attachment/wiki/cs122b-2018-spring-project5/query_load.txt : 54
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: omg
+query time:  0.04713702201843262
+number of results:  23
+http://mondego.ics.uci.edu/projects/SourcererCC/precision/TP-2.txt : 63
+http://mondego.ics.uci.edu/projects/SourcererCC/precision/TP-1.txt : 44
+http://mondego.ics.uci.edu/projects/SourcererCC/precision/FP-1.txt : 36
+http://mondego.ics.uci.edu/projects/SourcererCC/precision/FP-2.txt : 35
+http://mondego.ics.uci.edu/projects/SourcererCC/precision/FP-3.txt : 28
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: fafsa
+query time:  0.07908797264099121
+number of results:  8
+https://mswe.ics.uci.edu/faq/#faq-admissions : 3
+https://mswe.ics.uci.edu/faq/ : 3
+https://mcs.ics.uci.edu/current-students/once-admitted/vv/ : 2
+https://mcs.ics.uci.edu/faq/#faq-career : 2
+https://mcs.ics.uci.edu/faq/ : 2
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: webreg
+query time:  0.05404782295227051
+number of results:  31
+https://www.ics.uci.edu/~jacobson/ics23/EnrollmentInformation.html : 4
+https://www.ics.uci.edu/~jacobson/ics45J/EnrollmentInformation.html : 4
+https://www.ics.uci.edu/~jacobson/ics21/EnrollmentInformation.html : 4
+https://www.ics.uci.edu/ugrad/policies/Add_Drop_ChangeOption.php : 3
+https://www.ics.uci.edu/~kay/courses/131/hw/hw4.html : 3
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: average gpa
+query time:  0.07569599151611328
+number of results:  5
+https://www.ics.uci.edu/ugrad/QA_Graduation.php : 6
+https://www.ics.uci.edu/~kay/courses/31/hw/lab9.html : 5
+https://www.ics.uci.edu/~pattis/ICS-33/lectures/review.txt : 3
+https://www.stat.uci.edu/slider/b-s-in-data-science/ : 2
+https://www.ics.uci.edu/community/news/view_news.php?id=1120 : 1
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: enrollment 
+query time:  0.05579495429992676
+number of results:  336
+https://www.ics.uci.edu/~jacobson/ics23/EnrollmentInformation.html : 22
+https://www.ics.uci.edu/~kay/courses/i141/w15enrollment.html : 17
+https://www.ics.uci.edu/~jacobson/ics45J/EnrollmentInformation.html : 17
+https://www.ics.uci.edu/~jacobson/ics21/EnrollmentInformation.html : 17
+https://www.ics.uci.edu/ugrad/sao/Concurrent_Enrollment.php : 14
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: freshman application
+query time:  0.07895183563232422
+number of results:  7
+https://www.ics.uci.edu/community/news/view_news.php?id=1385 : 6
+https://www.ics.uci.edu/~kay/wordlist.txt : 5
+https://www.ics.uci.edu/community/news/spotlight/ : 4
+https://www.ics.uci.edu/community/news/view_news.php?id=1611 : 2
+https://www.stat.uci.edu/slider/b-s-in-data-science/ : 2
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: freshman application
+query time:  0.07097864151000977
+number of results:  7
+https://www.ics.uci.edu/community/news/view_news.php?id=1385 : 6
+https://www.ics.uci.edu/~kay/wordlist.txt : 5
+https://www.ics.uci.edu/community/news/spotlight/ : 4
+https://www.ics.uci.edu/community/news/view_news.php?id=1611 : 2
+https://www.stat.uci.edu/slider/b-s-in-data-science/ : 2
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: aditi majumder
+query time:  0.05129194259643555
+number of results:  10
+https://www.ics.uci.edu/faculty/ : 3
+https://www.ics.uci.edu/faculty/index.php?letter=M : 3
+https://www.ics.uci.edu/~irani/pubs/pubs.html : 2
+https://www.ics.uci.edu/faculty/area/#menu-01 : 2
+https://www.ics.uci.edu/community/news/view_news.php?id=1380 : 1
+(base) Caitlin-MBP-2:Assignment3 caitlin$ /usr/local/bin/python3 /Users/caitlin/Desktop/COMPSCI-121/Assignment3/milestone1.5.py
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.pyEnter a query: aditi majumder
+query time:  0.05584096908569336
+number of results:  10
+https://www.ics.uci.edu/faculty/ : 3
+https://www.ics.uci.edu/faculty/index.php?letter=M : 3
+https://www.ics.uci.edu/~irani/pubs/pubs.html : 2
+https://www.ics.uci.edu/faculty/area/#menu-01 : 2
+https://www.ics.uci.edu/community/news/view_news.php?id=1380 : 1
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: majumder
+query time:  0.04713606834411621
+number of results:  139
+http://graphics.ics.uci.edu/news.html : 131
+https://www.ics.uci.edu/~majumder/pub.html : 89
+http://graphics.ics.uci.edu/publication.html : 58
+https://www.ics.uci.edu/community/news/notes/notes_2010.php : 44
+https://www.cs.uci.edu/cmtc-video-interview-aditi-majumder-discussing-computer-vision/ : 30
+(base) Caitlin-MBP-2:Assignment3 caitlin$ python3 search.py
+Enter a query: faculty ics
+query time:  0.1195383071899414
+number of results:  3148
+https://www.ics.uci.edu/~rickl/courses/ics-h197/2012-fq-h197/ICS-H197-FQ-2012.htm : 279
+https://www.ics.uci.edu/~rickl/courses/ics-h197/2013-fq-h197/ICS-H197-FQ-2013.htm : 277
+https://www.ics.uci.edu/~rickl/courses/ics-h197/2014-fq-h197/ICS-H197-FQ-2014.htm : 274
+https://www.ics.uci.edu/~rickl/courses/ics-h197/2011-fq-h197/ICS-H197-FQ-2011.htm : 244
+https://www.ics.uci.edu/~rickl/courses/ics-h197/2016-fq-h197/ICS-H197-FQ-2016.htm : 219

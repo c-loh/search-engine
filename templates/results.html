@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Engine</title>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/general.css"> -->
+</head>
+<body>
+    <!-- query is argument passed in -->
+    <h1 style="text-align: center;">Results for Query: "{{ query }}"</h1>
+    <!-- display results -->
+    <p style="text-align: center;">time: {{ "%0.0f" % (seconds*1000) }}ms</p>
+    <br>
+
+    <table>
+    {% for key, value in results.items() %}
+        <tr>
+            <p style="text-align: center;"><a href="{{ key }}">{{ key }}</a> : {{ "%0.3f" % value }} </p>
+        </tr>
+    {% endfor %}
+    </table>
+
+    <br>
+    <br>
+    <br>
+    <p style="text-align: center;">results brought to you by: lukas, shreyers, caitorin, meggo</p>
+</body>
+</html>
